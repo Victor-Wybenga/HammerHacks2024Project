@@ -26,7 +26,20 @@ class TrueFalseQuestion(BaseQuestion):
 class MatchingQuestion(BaseQuestion):
     matches: frozendict.frozendict[str, str]
 
+@dataclass(frozen=True, slots=True, repr=True)
+class MultipleChoiceAnswer:
+    answer: str
+
+@dataclass(frozen=True, slots=True, repr=True)
+class TrueFalseAnswer:
+    answer: bool
+
+@dataclass(frozen=True, slots=True, repr=True)
+class MatchingAnswer:
+    matches: frozendict.frozendict[str, str]
+
 type Question = MultipleChoiceQuestion | TrueFalseQuestion | MatchingQuestion
+type Answer = MultipleChoiceAnswer | TrueFalseAnswer | MatchingAnswer
 
 @dataclass(slots=True, repr=True)
 class Quiz:
@@ -63,3 +76,15 @@ class Quiz:
                         question_text="Match the term to its definition",
                         matches=frozendict.frozendict({q.term: q.definition for q in question_sample})
                     ))
+
+def is_correct(question: Question, answer: Answer) -> bool:
+    match question:
+        case MultipleChoiceQuestion():
+            assert isinstance(answer, MultipleChoiceAnswer)
+            return answer.answer == question.answer
+        case TrueFalseQuestion():
+            assert isinstance(answer, TrueFalseAnswer)
+            return answer.answer == question.answer
+        case MatchingQuestion():
+            assert isinstance(answer, MatchingAnswer)
+            return answer.matches == question.matches

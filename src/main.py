@@ -2,7 +2,16 @@ import customtkinter as ctk
 import tkinter.ttk as ttk
 import pathlib, random, pprint
 import ParseQuiz, Quiz
+import frozendict
 
+class StartScreen(ttk.Frame):
+    ...
+    def __init__(self, master):
+        self.title = ttk.Label(
+            self, 
+            text="Help! I have a test tommorrow and I forgot to study!", 
+            font=("Papyrus", 20)
+        )
 
 class App(ctk.CTk):
     def __init__(self, title: str, size: tuple[int, int]):
@@ -17,9 +26,6 @@ class App(ctk.CTk):
             command=self.randomize_button_pos
         )
         self.button.pack()
-    
-    def randomize_button_pos(self):
-        self.button.place(relx=random.random(), rely=random.random(), anchor="center")
 
 def main() -> None:
     # TODO: Implement File Select
@@ -34,9 +40,9 @@ def main() -> None:
         Quiz.QuestionType.TRUE_FALSE, 
         Quiz.QuestionType.MATCHING
     })
-    pprint.pprint(quiz)
+        
 
-    app = App("Prep Quiz Maker", (800, 500))
+    app = App("Help! I have a test tommorrow and I forgot to study!", (800, 500))
     app.mainloop()
 
 if __name__ == "__main__":

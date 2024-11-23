@@ -48,8 +48,8 @@ class Quiz:
                     if reverse:
                         self.questions.append(MultipleChoiceQuestion(
                             question_text=f"What is the definition for {question.term}?",
-                            choices=frozenset((question.term, *random.sample([q.definition for q in parsed_quiz.questions], 3))),
-                            answer=question.term
+                            choices=frozenset((question.definition, *random.sample([q.definition for q in parsed_quiz.questions], 3))),
+                            answer=question.definition
                         ))
                     else:
                         self.questions.append(MultipleChoiceQuestion(

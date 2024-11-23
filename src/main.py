@@ -11,7 +11,7 @@ class App(ctk.CTk):
     def __init__(self, title: str, size: tuple[int, int]):
         super().__init__()
         self.title(title)
-        self.geometry(f"{size[0]}x{size[1]}")
+        self.geometry(f"600x600")
         
         self.button = ctk.CTkButton(
             self,

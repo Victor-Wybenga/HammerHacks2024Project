@@ -29,7 +29,11 @@ def main() -> None:
     if isinstance(parsed_quiz, ParseQuiz.FormatError):
         return
     
-    quiz = Quiz.Quiz(parsed_quiz)
+    quiz = Quiz.Quiz(parsed_quiz, question_types={
+        Quiz.QuestionType.MULTIPLE_CHOICE, 
+        Quiz.QuestionType.TRUE_FALSE, 
+        Quiz.QuestionType.MATCHING
+    })
     pprint.pprint(quiz)
 
     app = App("Prep Quiz Maker", (800, 500))

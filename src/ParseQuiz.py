@@ -29,7 +29,7 @@ class QuizDocument:
         for paragraph in filtered_paragraphs:
             split_text = paragraph.text.split(": ")
             try:
-                term, definition = split_text[0], split_text[1]
+                term, definition = split_text[0], "".join(split_text[1:])
             except IndexError:
                 return FormatError("Questions must be in format: '[term]: [definition]'")
             questions.add(ParsedQuestion(term, definition))

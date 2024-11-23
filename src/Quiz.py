@@ -1,5 +1,6 @@
 import enum
 import random
+import frozendict
 from dataclasses import dataclass
 import ParseQuiz
 
@@ -23,7 +24,7 @@ class TrueFalseQuestion(BaseQuestion):
 
 @dataclass(frozen=True, slots=True, repr=True)
 class MatchingQuestion(BaseQuestion):
-    matches: dict[str, str]
+    matches: frozendict.frozendict[str, str]
 
 type Question = MultipleChoiceQuestion | TrueFalseQuestion | MatchingQuestion
 
@@ -60,5 +61,5 @@ class Quiz:
                     question_sample = random.sample(list(parsed_quiz.questions), 4)
                     self.questions.add(MatchingQuestion(
                         question_text="Match the term to its definition",
-                        matches={q.term: q.definition for q in question_sample}
+                        matches=frozendict.frozendict({q.term: q.definition for q in question_sample})
                     ))

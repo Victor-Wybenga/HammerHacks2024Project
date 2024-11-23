@@ -1,49 +1,38 @@
 import customtkinter as ctk
-import tkinter.ttk as ttk
-import pathlib, random, pprint
+import pathlib
 import ParseQuiz, Quiz
-import frozendict
+import docx
 
-class StartScreen(ttk.Frame):
-    ...
-    def __init__(self, master):
-        self.title = ttk.Label(
-            self, 
-            text="Help! I have a test tommorrow and I forgot to study!", 
-            font=("Papyrus", 20)
-        )
-
-class App(ctk.CTk):
-    def __init__(self, title: str, size: tuple[int, int]):
-        super().__init__()
-        self.title(title)
-        self.maxsize(*size)
-        self.geometry(f"{size[0]}x{size[1]}")
-        
-        self.button = ctk.CTkButton(
-            self,
-            text="Click Me!",
-            command=self.randomize_button_pos
-        )
-        self.button.pack()
-
-def main() -> None:
-    # TODO: Implement File Select
-    document_path = pathlib.Path(__file__).parent / "examples" / "History Notes.docx"
-    quiz_document = ParseQuiz.QuizDocument(document_path)
+def upload_document() -> Quiz.Quiz:
+    filename = ctk.filedialog.askopenfilename(filetypes=[("Word Document", "*.docx")])
+    quiz_document = ParseQuiz.QuizDocument(pathlib.Path(filename))
     parsed_quiz = quiz_document.make_quiz()
     if isinstance(parsed_quiz, ParseQuiz.FormatError):
-        return
-    
-    quiz = Quiz.Quiz(parsed_quiz, question_types={
-        Quiz.QuestionType.MULTIPLE_CHOICE, 
-        Quiz.QuestionType.TRUE_FALSE, 
-        Quiz.QuestionType.MATCHING
-    })
-        
+        print("Format Error!")
+        quit()
+    return Quiz.Quiz(parsed_quiz, 30)
 
-    app = App("Help! I have a test tommorrow and I forgot to study!", (800, 500))
-    app.mainloop()
+def main() -> None:
+    doc = docx.Document()
+    quiz = upload_document()
+    doc.add_paragraph(quiz.topic, style='Title')
+    for idx, question in enumerate(quiz.questions):
+        doc.add_paragraph(f"{idx + 1}: {question.question_text}")
+        if isinstance(question, Quiz.MultipleChoiceQuestion):
+            doc.add_paragraph("\n".join([f"{chr(idx + 65)} : {choice}" for idx, choice in enumerate(question.choices)]))
+        if isinstance(question, Quiz.TrueFalseQuestion):
+            doc.add_paragraph("A. True\nB. False")
+        if idx % 6 == 5:
+            doc.add_page_break()
+    
+    doc.add_page_break()
+    doc.add_paragraph("Answers", style='Title')
+    for idx, question in enumerate(quiz.questions):
+        doc.add_paragraph(f"{idx + 1}: {question.answer}")
+    f = ctk.filedialog.asksaveasfile(mode='wb', defaultextension=".docx")
+    if f == None:
+        return
+    doc.save(f)
 
 if __name__ == "__main__":
     main()

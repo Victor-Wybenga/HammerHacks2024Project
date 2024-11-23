@@ -43,12 +43,20 @@ class Quiz:
             question_type = random.choice([QuestionType.MULTIPLE_CHOICE, QuestionType.TRUE_FALSE])
             match question_type:
                 case QuestionType.MULTIPLE_CHOICE:
+                    reverse = random.choice((True, False))
                     question = random.choice(list(parsed_quiz.questions))
-                    self.questions.append(MultipleChoiceQuestion(
-                        question_text=f"What is the term for {question.definition}?",
-                        choices=frozenset((question.term, *random.sample([q.term for q in parsed_quiz.questions], 3))),
-                        answer=question.term
-                    ))
+                    if reverse:
+                        self.questions.append(MultipleChoiceQuestion(
+                            question_text=f"What is the definition for {question.term}?",
+                            choices=frozenset((question.term, *random.sample([q.definition for q in parsed_quiz.questions], 3))),
+                            answer=question.term
+                        ))
+                    else:
+                        self.questions.append(MultipleChoiceQuestion(
+                            question_text=f"What is the term for {question.definition}?",
+                            choices=frozenset((question.term, *random.sample([q.term for q in parsed_quiz.questions], 3))),
+                            answer=question.term
+                        ))
                 case QuestionType.TRUE_FALSE:
                     question = random.choice(list(parsed_quiz.questions))
                     is_correct = random.choice((True, False))

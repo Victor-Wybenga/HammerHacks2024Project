@@ -1,30 +1,32 @@
 import customtkinter as ctk
 import tkinter.ttk as ttk
-import typing
+import pathlib
 import random
+import pprint
 
-def entry(main: typing.Callable[..., None]) -> None:
-    if __name__ == '__main__':
-        main()
 
 class App(ctk.CTk):
     def __init__(self, title: str, size: tuple[int, int]):
         super().__init__()
         self.title(title)
-        self.geometry(f"600x600")
+        self.maxsize(*size)
+        self.geometry(f"{size[0]}x{size[1]}")
         
         self.button = ctk.CTkButton(
             self,
             text="Click Me!",
             command=self.randomize_button_pos
         )
-        self.button.place(relx=0.5,rely=0.5)
+        self.button.pack()
     
     def randomize_button_pos(self):
-        self.button.place(relx=random.random(),rely=random.random())
-        
+        self.button.place(relx=random.random(), rely=random.random(), anchor="center")
 
-@entry
-def main() -> None: 
-    app = App("Calculator", (240, 320))
+def main() -> None:
+    # TODO: Implement File Select
+    document_path = pathlib.Path(__file__).parent / "examples" / "History Notes.docx"
+    app = App("Prep Quiz Maker", (800, 500))
     app.mainloop()
+
+if __name__ == "__main__":
+    main()

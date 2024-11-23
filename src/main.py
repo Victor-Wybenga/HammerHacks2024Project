@@ -1,8 +1,7 @@
 import customtkinter as ctk
 import tkinter.ttk as ttk
-import pathlib
-import random
-import pprint
+import pathlib, random, pprint
+import ParseQuiz, Quiz
 
 
 class App(ctk.CTk):
@@ -25,6 +24,14 @@ class App(ctk.CTk):
 def main() -> None:
     # TODO: Implement File Select
     document_path = pathlib.Path(__file__).parent / "examples" / "History Notes.docx"
+    quiz_document = ParseQuiz.QuizDocument(document_path)
+    parsed_quiz = quiz_document.make_quiz()
+    if isinstance(parsed_quiz, ParseQuiz.FormatError):
+        return
+    
+    quiz = Quiz.Quiz(parsed_quiz)
+    pprint.pprint(quiz)
+
     app = App("Prep Quiz Maker", (800, 500))
     app.mainloop()
 

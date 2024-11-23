@@ -1,7 +1,7 @@
 import enum
 import random
 from dataclasses import dataclass
-import src.ParseQuiz
+import ParseQuiz
 
 class QuestionType(enum.Enum):
     MULTIPLE_CHOICE = 0
@@ -14,7 +14,7 @@ class BaseQuestion:
 
 @dataclass(frozen=True, slots=True, repr=True)
 class MultipleChoiceQuestion(BaseQuestion):
-    choices: list[str]
+    choices: frozenset[str]
     answer: str
 
 @dataclass(frozen=True, slots=True, repr=True)
@@ -29,8 +29,10 @@ type Question = MultipleChoiceQuestion | TrueFalseQuestion | MatchingQuestion
 
 @dataclass(slots=True, repr=True)
 class Quiz:
-    def __init__(self, parsed_quiz: src.ParseQuiz.ParsedQuiz, question_types: set[QuestionType], num_questions: int = 20):
-        if question_types:
+    questions: set[Question]
+    topic: str
+    def __init__(self, parsed_quiz: ParseQuiz.ParsedQuiz, question_types: set[QuestionType] = set(), num_questions: int = 20):
+        if question_types == set():
             question_types = {QuestionType.MULTIPLE_CHOICE}
         self.questions: set[Question] = set()
         self.topic: str = parsed_quiz.topic
@@ -41,7 +43,7 @@ class Quiz:
                     question = random.choice(list(parsed_quiz.questions))
                     self.questions.add(MultipleChoiceQuestion(
                         question_text=f"What is the term for {question.definition}?",
-                        choices=[question.term] + random.sample([q.term for q in parsed_quiz.questions], 3),
+                        choices=frozenset((question.term, *random.sample([q.term for q in parsed_quiz.questions], 3))),
                         answer=question.term
                     ))
                 case QuestionType.TRUE_FALSE:
@@ -60,4 +62,3 @@ class Quiz:
                         question_text="Match the term to its definition",
                         matches={q.term: q.definition for q in question_sample}
                     ))
-

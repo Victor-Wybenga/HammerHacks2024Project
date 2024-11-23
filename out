@@ -1,0 +1,146 @@
+Quiz(questions={MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'Canada’s Supreme law?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='Constitution'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'peace treaty signed on '
+                                                     'June 28, 1919, that '
+                                                     'ended the state of war '
+                                                     'between Germany and most '
+                                                     'of the Allied Powers?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 2'}),
+                                       answer='Treaty of Versailles'),
+                MultipleChoiceQuestion(question_text='What is the term for the '
+                                                     'deadliest conflicts in '
+                                                     'history, resulting in an '
+                                                     'estimated 9 million '
+                                                     'military dead and 23 '
+                                                     'million wounded, plus up '
+                                                     'to 8 million civilian '
+                                                     'deaths from causes '
+                                                     'including genocide.?',
+                                       choices=frozenset({'Constitution',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='World war 1'),
+                MultipleChoiceQuestion(question_text='What is the term for the '
+                                                     'deadliest conflicts in '
+                                                     'history, resulting in an '
+                                                     'estimated 9 million '
+                                                     'military dead and 23 '
+                                                     'million wounded, plus up '
+                                                     'to 8 million civilian '
+                                                     'deaths from causes '
+                                                     'including genocide.?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='World war 1'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'peace treaty signed on '
+                                                     'June 28, 1919, that '
+                                                     'ended the state of war '
+                                                     'between Germany and most '
+                                                     'of the Allied Powers?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1'}),
+                                       answer='Treaty of Versailles'),
+                MultipleChoiceQuestion(question_text='What is the term for a '
+                                                     'global conflict between '
+                                                     'two coalitions?',
+                                       choices=frozenset({'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='World war 2'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'Canada’s Supreme law?',
+                                       choices=frozenset({'Constitution',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='Constitution'),
+                MultipleChoiceQuestion(question_text='What is the term for a '
+                                                     'global conflict between '
+                                                     'two coalitions?',
+                                       choices=frozenset({'Constitution',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='World war 2'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'peace treaty signed on '
+                                                     'June 28, 1919, that '
+                                                     'ended the state of war '
+                                                     'between Germany and most '
+                                                     'of the Allied Powers?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='Treaty of Versailles'),
+                MultipleChoiceQuestion(question_text='What is the term for the '
+                                                     'deadliest conflicts in '
+                                                     'history, resulting in an '
+                                                     'estimated 9 million '
+                                                     'military dead and 23 '
+                                                     'million wounded, plus up '
+                                                     'to 8 million civilian '
+                                                     'deaths from causes '
+                                                     'including genocide.?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1'}),
+                                       answer='World war 1'),
+                MultipleChoiceQuestion(question_text='What is the term for a '
+                                                     'global conflict between '
+                                                     'two coalitions?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 2'}),
+                                       answer='World war 2'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'peace treaty signed on '
+                                                     'June 28, 1919, that '
+                                                     'ended the state of war '
+                                                     'between Germany and most '
+                                                     'of the Allied Powers?',
+                                       choices=frozenset({'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='Treaty of Versailles'),
+                MultipleChoiceQuestion(question_text='What is the term for '
+                                                     'Canada’s Supreme law?',
+                                       choices=frozenset({'Constitution',
+                                                          'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1'}),
+                                       answer='Constitution'),
+                MultipleChoiceQuestion(question_text='What is the term for the '
+                                                     'deadliest conflicts in '
+                                                     'history, resulting in an '
+                                                     'estimated 9 million '
+                                                     'military dead and 23 '
+                                                     'million wounded, plus up '
+                                                     'to 8 million civilian '
+                                                     'deaths from causes '
+                                                     'including genocide.?',
+                                       choices=frozenset({'Treaty of '
+                                                          'Versailles',
+                                                          'World war 1',
+                                                          'World war 2'}),
+                                       answer='World war 1')},
+     topic='History Notes')
